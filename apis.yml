@@ -12,15 +12,15 @@ created: '2025-02-06'
 modified: '2026-03-16'
 specificationVersion: '0.19'
 tags:
-  - Sports
   - Auto Racing
+  - Sports
   - Stock Cars
 apis:
   - aid: nascar:nascar
     name: NASCAR API
     tags:
-      - Sports
       - Auto Racing
+      - Sports
       - Stock Cars
     humanURL: https://feed.nascar.com/swagger/ui/index
     properties:
