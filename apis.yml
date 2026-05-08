@@ -36,6 +36,8 @@ apis:
         type: Documentation
       - url: https://feed.nascar.com/swagger/ui/index
         type: Reference
+      - url: openapi/nascar-openapi.yml
+        type: OpenAPI
     description: >-
       The NASCAR Feed API provides access to race results, standings,
       schedules, driver and team information, lap-by-lap data, and other

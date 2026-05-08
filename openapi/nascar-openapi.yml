@@ -1,0 +1,562 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed API
+  description: >-
+    NASCAR Feed REST API providing race results, standings, schedules,
+    driver and team information, lap-by-lap data, live race telemetry,
+    inspection data, and other motorsport data across NASCAR's racing
+    series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+  - url: https://feed.nascar.com
+    description: NASCAR Feed production API
+tags:
+  - name: Companies
+  - name: Drivers
+  - name: Points
+  - name: Races
+  - name: Live
+  - name: Tracks
+  - name: TrackTemp
+  - name: Series
+  - name: Weekend
+  - name: EntryList
+  - name: Stats
+  - name: Inspection
+paths:
+  /api/CompanyAnnuals:
+    get:
+      tags: [Companies]
+      operationId: listCompanyAnnuals
+      summary: List all company annuals and associations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Companies:
+    get:
+      tags: [Companies]
+      operationId: searchCompanies
+      summary: Search companies by name
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/CompanyAnnuals/Member:
+    get:
+      tags: [Companies]
+      operationId: getCompanyAnnualsForMember
+      summary: Retrieve annuals for a member id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Driver:
+    get:
+      tags: [Drivers]
+      operationId: listDrivers
+      summary: List drivers by series and season
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/DriverPoints:
+    get:
+      tags: [Points]
+      operationId: getDriverPoints
+      summary: Driver championship standings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/ManufacturerPoints:
+    get:
+      tags: [Points]
+      operationId: getManufacturerPoints
+      summary: Manufacturer points
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/OwnerPoints:
+    get:
+      tags: [Points]
+      operationId: getOwnerPoints
+      summary: Owner championship points
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/DriverSummary:
+    get:
+      tags: [Drivers]
+      operationId: getDriverSummary
+      summary: Driver performance summary by track type, track, and season
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/races:
+    get:
+      tags: [Races]
+      operationId: listRaces
+      summary: Race results by season and series
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/races/{race_id}:
+    get:
+      tags: [Races]
+      operationId: getRace
+      summary: Specific race details
+      parameters:
+        - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/racelist:
+    get:
+      tags: [Races]
+      operationId: getRaceList
+      summary: Historical race listings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/races/{race_id}/journal:
+    get:
+      tags: [Races]
+      operationId: getRaceJournal
+      summary: Race journal file download
+      parameters:
+        - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+  /api/raceinfractions:
+    get:
+      tags: [Races]
+      operationId: getRaceInfractions
+      summary: Infractions for a specific race
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveFeed:
+    get:
+      tags: [Live]
+      operationId: getLiveFeed
+      summary: On-track activity feed
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveFlag:
+    get:
+      tags: [Live]
+      operationId: getLiveFlag
+      summary: Flag status updates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LivePoints:
+    get:
+      tags: [Live]
+      operationId: getLivePoints
+      summary: Current standings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveQualifying:
+    get:
+      tags: [Live]
+      operationId: getLiveQualifying
+      summary: Qualifying results
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveQualifyingRounds:
+    get:
+      tags: [Live]
+      operationId: getLiveQualifyingRounds
+      summary: Round-by-round qualifying
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LivePitData:
+    get:
+      tags: [Live]
+      operationId: getLivePitData
+      summary: Pit stop information
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveStages:
+    get:
+      tags: [Live]
+      operationId: getLiveStages
+      summary: Stage results
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/tracks:
+    get:
+      tags: [Tracks]
+      operationId: listTracks
+      summary: List all tracks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/track/{track_id}:
+    get:
+      tags: [Tracks]
+      operationId: getTrack
+      summary: Specific track details
+      parameters:
+        - name: track_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/track:
+    get:
+      tags: [Tracks]
+      operationId: getTrackWithRaces
+      summary: Track with associated races
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/tracktemp/current:
+    get:
+      tags: [TrackTemp]
+      operationId: getTrackTempCurrent
+      summary: Current track temperature readings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/tracktemp/archive:
+    get:
+      tags: [TrackTemp]
+      operationId: getTrackTempArchive
+      summary: Historical track temperature data
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/tracktemp/daterange:
+    get:
+      tags: [TrackTemp]
+      operationId: getTrackTempByDateRange
+      summary: Track temperature data by time range
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Series:
+    get:
+      tags: [Series]
+      operationId: getSeries
+      summary: Series overview
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Series/Seasons:
+    get:
+      tags: [Series]
+      operationId: getSeriesSeasons
+      summary: Season champions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/weekend/{race_id}:
+    get:
+      tags: [Weekend]
+      operationId: getWeekend
+      summary: Full race weekend data
+      parameters:
+        - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/weekendschedule/{race_id}:
+    get:
+      tags: [Weekend]
+      operationId: getWeekendSchedule
+      summary: Schedule for a specific race
+      parameters:
+        - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/weekendschedule:
+    get:
+      tags: [Weekend]
+      operationId: getWeekendScheduleAll
+      summary: Series and season weekend schedule
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/prelimentrylist/{race_id}:
+    get:
+      tags: [EntryList]
+      operationId: getPreliminaryEntryList
+      summary: Preliminary entry list for a race
+      parameters:
+        - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/stats/season:
+    get:
+      tags: [Stats]
+      operationId: getSeasonStats
+      summary: Season averages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/stats/boxscore:
+    get:
+      tags: [Stats]
+      operationId: getBoxScore
+      summary: Race box scores
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/stats/reports/{race_id}:
+    get:
+      tags: [Stats]
+      operationId: listStatsReports
+      summary: Available reports for a race
+      parameters:
+        - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/stats/report:
+    get:
+      tags: [Stats]
+      operationId: getStatsReport
+      summary: Download a report by key
+      responses:
+        '200':
+          description: OK
+  /api/Inspection/aim/{id}:
+    get:
+      tags: [Inspection]
+      operationId: getInspectionAim
+      summary: AIM inspection system data
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Inspection/idr/{idrnumber}:
+    get:
+      tags: [Inspection]
+      operationId: getInspectionIdr
+      summary: Entry IDR lookup
+      parameters:
+        - name: idrnumber
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Inspection/devicenumbers:
+    get:
+      tags: [Inspection]
+      operationId: getInspectionDeviceNumbers
+      summary: Device number mapping
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Inspection/submission/technique:
+    get:
+      tags: [Inspection]
+      operationId: getInspectionTechniqueSubmissions
+      summary: Technique submissions
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Inspection/incidentwebhook:
+    post:
+      tags: [Inspection]
+      operationId: postInspectionIncidentWebhook
+      summary: Safety incident reporting webhook
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Resource'
+      responses:
+        '200':
+          description: OK
+        '202':
+          description: Accepted
+components:
+  parameters:
+    RaceId:
+      name: race_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Race identifier.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
