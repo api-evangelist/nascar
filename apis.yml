@@ -49,9 +49,9 @@ common:
   - url: https://feed.nascar.com/swagger/ui/index
     type: Documentation
   - url: https://www.nascar.com/terms-of-service/
-    type: Terms of Service
+    type: TermsOfService
   - url: https://www.nascar.com/privacy-policy/
-    type: Privacy Policy
+    type: PrivacyPolicy
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
