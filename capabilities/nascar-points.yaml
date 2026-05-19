@@ -1,0 +1,131 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASCAR Feed API — Points
+  description: 'NASCAR Feed API — Points. 3 operations. Lead operation: Driver championship standings. Self-contained Naftiko
+    capability covering one Nascar business surface.'
+  tags:
+  - Nascar
+  - Points
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASCAR_API_KEY: NASCAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nascar-points
+    baseUri: https://feed.nascar.com
+    description: NASCAR Feed API — Points business capability. Self-contained, no shared references.
+    resources:
+    - name: api-DriverPoints
+      path: /api/DriverPoints
+      operations:
+      - name: getdriverpoints
+        method: GET
+        description: Driver championship standings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-ManufacturerPoints
+      path: /api/ManufacturerPoints
+      operations:
+      - name: getmanufacturerpoints
+        method: GET
+        description: Manufacturer points
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-OwnerPoints
+      path: /api/OwnerPoints
+      operations:
+      - name: getownerpoints
+        method: GET
+        description: Owner championship points
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: nascar-points-rest
+    port: 8080
+    description: REST adapter for NASCAR Feed API — Points. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/driverpoints
+      name: api-driverpoints
+      description: REST surface for api-DriverPoints.
+      operations:
+      - method: GET
+        name: getdriverpoints
+        description: Driver championship standings
+        call: nascar-points.getdriverpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/manufacturerpoints
+      name: api-manufacturerpoints
+      description: REST surface for api-ManufacturerPoints.
+      operations:
+      - method: GET
+        name: getmanufacturerpoints
+        description: Manufacturer points
+        call: nascar-points.getmanufacturerpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/ownerpoints
+      name: api-ownerpoints
+      description: REST surface for api-OwnerPoints.
+      operations:
+      - method: GET
+        name: getownerpoints
+        description: Owner championship points
+        call: nascar-points.getownerpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nascar-points-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASCAR Feed API — Points. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: driver-championship-standings
+      description: Driver championship standings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-points.getdriverpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: manufacturer-points
+      description: Manufacturer points
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-points.getmanufacturerpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: owner-championship-points
+      description: Owner championship points
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-points.getownerpoints
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASCAR Feed API — EntryList
+  description: 'NASCAR Feed API — EntryList. 1 operations. Lead operation: Preliminary entry list for a race. Self-contained
+    Naftiko capability covering one Nascar business surface.'
+  tags:
+  - Nascar
+  - EntryList
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASCAR_API_KEY: NASCAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nascar-entrylist
+    baseUri: https://feed.nascar.com
+    description: NASCAR Feed API — EntryList business capability. Self-contained, no shared references.
+    resources:
+    - name: api-prelimentrylist-race_id
+      path: /api/prelimentrylist/{race_id}
+      operations:
+      - name: getpreliminaryentrylist
+        method: GET
+        description: Preliminary entry list for a race
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: nascar-entrylist-rest
+    port: 8080
+    description: REST adapter for NASCAR Feed API — EntryList. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/prelimentrylist/{race-id}
+      name: api-prelimentrylist-race-id
+      description: REST surface for api-prelimentrylist-race_id.
+      operations:
+      - method: GET
+        name: getpreliminaryentrylist
+        description: Preliminary entry list for a race
+        call: nascar-entrylist.getpreliminaryentrylist
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nascar-entrylist-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASCAR Feed API — EntryList. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: preliminary-entry-list-race
+      description: Preliminary entry list for a race
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-entrylist.getpreliminaryentrylist
+      outputParameters:
+      - type: object
+        mapping: $.

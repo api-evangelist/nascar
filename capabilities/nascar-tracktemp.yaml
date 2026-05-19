@@ -1,0 +1,131 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASCAR Feed API — TrackTemp
+  description: 'NASCAR Feed API — TrackTemp. 3 operations. Lead operation: Historical track temperature data. Self-contained
+    Naftiko capability covering one Nascar business surface.'
+  tags:
+  - Nascar
+  - TrackTemp
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASCAR_API_KEY: NASCAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nascar-tracktemp
+    baseUri: https://feed.nascar.com
+    description: NASCAR Feed API — TrackTemp business capability. Self-contained, no shared references.
+    resources:
+    - name: api-tracktemp-archive
+      path: /api/tracktemp/archive
+      operations:
+      - name: gettracktemparchive
+        method: GET
+        description: Historical track temperature data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-tracktemp-current
+      path: /api/tracktemp/current
+      operations:
+      - name: gettracktempcurrent
+        method: GET
+        description: Current track temperature readings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-tracktemp-daterange
+      path: /api/tracktemp/daterange
+      operations:
+      - name: gettracktempbydaterange
+        method: GET
+        description: Track temperature data by time range
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: nascar-tracktemp-rest
+    port: 8080
+    description: REST adapter for NASCAR Feed API — TrackTemp. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/tracktemp/archive
+      name: api-tracktemp-archive
+      description: REST surface for api-tracktemp-archive.
+      operations:
+      - method: GET
+        name: gettracktemparchive
+        description: Historical track temperature data
+        call: nascar-tracktemp.gettracktemparchive
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tracktemp/current
+      name: api-tracktemp-current
+      description: REST surface for api-tracktemp-current.
+      operations:
+      - method: GET
+        name: gettracktempcurrent
+        description: Current track temperature readings
+        call: nascar-tracktemp.gettracktempcurrent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tracktemp/daterange
+      name: api-tracktemp-daterange
+      description: REST surface for api-tracktemp-daterange.
+      operations:
+      - method: GET
+        name: gettracktempbydaterange
+        description: Track temperature data by time range
+        call: nascar-tracktemp.gettracktempbydaterange
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nascar-tracktemp-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASCAR Feed API — TrackTemp. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: historical-track-temperature-data
+      description: Historical track temperature data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-tracktemp.gettracktemparchive
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: current-track-temperature-readings
+      description: Current track temperature readings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-tracktemp.gettracktempcurrent
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: track-temperature-data-time-range
+      description: Track temperature data by time range
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-tracktemp.gettracktempbydaterange
+      outputParameters:
+      - type: object
+        mapping: $.

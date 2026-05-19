@@ -1,0 +1,99 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASCAR Feed API — Series
+  description: 'NASCAR Feed API — Series. 2 operations. Lead operation: Series overview. Self-contained Naftiko capability
+    covering one Nascar business surface.'
+  tags:
+  - Nascar
+  - Series
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASCAR_API_KEY: NASCAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nascar-series
+    baseUri: https://feed.nascar.com
+    description: NASCAR Feed API — Series business capability. Self-contained, no shared references.
+    resources:
+    - name: api-Series
+      path: /api/Series
+      operations:
+      - name: getseries
+        method: GET
+        description: Series overview
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-Series-Seasons
+      path: /api/Series/Seasons
+      operations:
+      - name: getseriesseasons
+        method: GET
+        description: Season champions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: nascar-series-rest
+    port: 8080
+    description: REST adapter for NASCAR Feed API — Series. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/series
+      name: api-series
+      description: REST surface for api-Series.
+      operations:
+      - method: GET
+        name: getseries
+        description: Series overview
+        call: nascar-series.getseries
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/series/seasons
+      name: api-series-seasons
+      description: REST surface for api-Series-Seasons.
+      operations:
+      - method: GET
+        name: getseriesseasons
+        description: Season champions
+        call: nascar-series.getseriesseasons
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nascar-series-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASCAR Feed API — Series. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: series-overview
+      description: Series overview
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-series.getseries
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: season-champions
+      description: Season champions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-series.getseriesseasons
+      outputParameters:
+      - type: object
+        mapping: $.

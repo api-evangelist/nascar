@@ -1,0 +1,131 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASCAR Feed API — Weekend
+  description: 'NASCAR Feed API — Weekend. 3 operations. Lead operation: Full race weekend data. Self-contained Naftiko capability
+    covering one Nascar business surface.'
+  tags:
+  - Nascar
+  - Weekend
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASCAR_API_KEY: NASCAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nascar-weekend
+    baseUri: https://feed.nascar.com
+    description: NASCAR Feed API — Weekend business capability. Self-contained, no shared references.
+    resources:
+    - name: api-weekend-race_id
+      path: /api/weekend/{race_id}
+      operations:
+      - name: getweekend
+        method: GET
+        description: Full race weekend data
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-weekendschedule
+      path: /api/weekendschedule
+      operations:
+      - name: getweekendscheduleall
+        method: GET
+        description: Series and season weekend schedule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-weekendschedule-race_id
+      path: /api/weekendschedule/{race_id}
+      operations:
+      - name: getweekendschedule
+        method: GET
+        description: Schedule for a specific race
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: nascar-weekend-rest
+    port: 8080
+    description: REST adapter for NASCAR Feed API — Weekend. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/weekend/{race-id}
+      name: api-weekend-race-id
+      description: REST surface for api-weekend-race_id.
+      operations:
+      - method: GET
+        name: getweekend
+        description: Full race weekend data
+        call: nascar-weekend.getweekend
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/weekendschedule
+      name: api-weekendschedule
+      description: REST surface for api-weekendschedule.
+      operations:
+      - method: GET
+        name: getweekendscheduleall
+        description: Series and season weekend schedule
+        call: nascar-weekend.getweekendscheduleall
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/weekendschedule/{race-id}
+      name: api-weekendschedule-race-id
+      description: REST surface for api-weekendschedule-race_id.
+      operations:
+      - method: GET
+        name: getweekendschedule
+        description: Schedule for a specific race
+        call: nascar-weekend.getweekendschedule
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nascar-weekend-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASCAR Feed API — Weekend. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: full-race-weekend-data
+      description: Full race weekend data
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-weekend.getweekend
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: series-and-season-weekend-schedule
+      description: Series and season weekend schedule
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-weekend.getweekendscheduleall
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: schedule-specific-race
+      description: Schedule for a specific race
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-weekend.getweekendschedule
+      outputParameters:
+      - type: object
+        mapping: $.

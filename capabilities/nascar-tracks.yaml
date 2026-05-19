@@ -1,0 +1,140 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: NASCAR Feed API — Tracks
+  description: 'NASCAR Feed API — Tracks. 3 operations. Lead operation: Track with associated races. Self-contained Naftiko
+    capability covering one Nascar business surface.'
+  tags:
+  - Nascar
+  - Tracks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    NASCAR_API_KEY: NASCAR_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: nascar-tracks
+    baseUri: https://feed.nascar.com
+    description: NASCAR Feed API — Tracks business capability. Self-contained, no shared references.
+    resources:
+    - name: api-track
+      path: /api/track
+      operations:
+      - name: gettrackwithraces
+        method: GET
+        description: Track with associated races
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-track-track_id
+      path: /api/track/{track_id}
+      operations:
+      - name: gettrack
+        method: GET
+        description: Specific track details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: track_id
+          in: path
+          type: string
+          required: true
+    - name: api-tracks
+      path: /api/tracks
+      operations:
+      - name: listtracks
+        method: GET
+        description: List all tracks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: nascar-tracks-rest
+    port: 8080
+    description: REST adapter for NASCAR Feed API — Tracks. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/track
+      name: api-track
+      description: REST surface for api-track.
+      operations:
+      - method: GET
+        name: gettrackwithraces
+        description: Track with associated races
+        call: nascar-tracks.gettrackwithraces
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/track/{track-id}
+      name: api-track-track-id
+      description: REST surface for api-track-track_id.
+      operations:
+      - method: GET
+        name: gettrack
+        description: Specific track details
+        call: nascar-tracks.gettrack
+        with:
+          track_id: rest.track_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/tracks
+      name: api-tracks
+      description: REST surface for api-tracks.
+      operations:
+      - method: GET
+        name: listtracks
+        description: List all tracks
+        call: nascar-tracks.listtracks
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: nascar-tracks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for NASCAR Feed API — Tracks. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: track-associated-races
+      description: Track with associated races
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-tracks.gettrackwithraces
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: specific-track-details
+      description: Specific track details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-tracks.gettrack
+      with:
+        track_id: tools.track_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-tracks
+      description: List all tracks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: nascar-tracks.listtracks
+      outputParameters:
+      - type: object
+        mapping: $.
