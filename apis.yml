@@ -1,9 +1,10 @@
 aid: nascar
 name: NASCAR
-description: NASCAR, the National Association for Stock Car Auto Racing, is a professional auto racing organization that sanctions
-  and governs multiple racing series, including the popular NASCAR Cup Series. NASCAR exposes a feed API documented via Swagger
-  that delivers race results, standings, schedules, driver and team information, and other motorsport data for partners, broadcasters,
-  and fans.
+description: >-
+  NASCAR, the National Association for Stock Car Auto Racing, is a professional auto racing organization that sanctions
+  and governs multiple racing series, including the popular NASCAR Cup Series. NASCAR exposes a feed API documented via
+  Swagger that delivers race results, standings, schedules, driver and team information, and other motorsport data for
+  partners, broadcasters, and fans.
 type: Index
 position: Consumer
 access: 3rd-Party
@@ -13,65 +14,42 @@ created: '2025-02-06'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 tags:
-- Auto Racing
-- Sports
-- Stock Cars
-- Motorsports
-- Race Results
-- Schedules
-apis:
-- aid: nascar:nascar
-  name: NASCAR Feed API
-  tags:
   - Auto Racing
   - Sports
   - Stock Cars
   - Motorsports
-  humanURL: https://feed.nascar.com/swagger/ui/index
-  properties:
+  - Race Results
+  - Schedules
+apis:
+  - aid: nascar:nascar
+    name: NASCAR Feed API
+    tags:
+      - Auto Racing
+      - Sports
+      - Stock Cars
+      - Motorsports
+    humanURL: https://feed.nascar.com/swagger/ui/index
+    properties:
+      - url: https://feed.nascar.com/swagger/ui/index
+        type: Documentation
+      - url: https://feed.nascar.com/swagger/ui/index
+        type: Reference
+      - url: openapi/nascar-openapi.yml
+        type: OpenAPI
+    description: >-
+      The NASCAR Feed API provides access to race results, standings, schedules, driver and team information, lap-by-lap
+      data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI.
+common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/nascar
+  - url: https://www.nascar.com/
+    type: Website
   - url: https://feed.nascar.com/swagger/ui/index
     type: Documentation
-  - url: https://feed.nascar.com/swagger/ui/index
-    type: Reference
-  - url: openapi/nascar-openapi.yml
-    type: OpenAPI
-  - type: NaftikoCapability
-    url: capabilities/nascar-companies.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-drivers.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-entrylist.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-inspection.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-live.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-points.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-races.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-series.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-stats.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-tracktemp.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-tracks.yaml
-  - type: NaftikoCapability
-    url: capabilities/nascar-weekend.yaml
-  description: The NASCAR Feed API provides access to race results, standings, schedules, driver and team information, lap-by-lap
-    data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI.
-common:
-- type: LinkedIn
-  url: https://www.linkedin.com/company/nascar
-- url: https://www.nascar.com/
-  type: Website
-- url: https://feed.nascar.com/swagger/ui/index
-  type: Documentation
-- url: https://www.nascar.com/terms-of-service/
-  type: TermsOfService
-- url: https://www.nascar.com/privacy-policy/
-  type: PrivacyPolicy
+  - url: https://www.nascar.com/terms-of-service/
+    type: TermsOfService
+  - url: https://www.nascar.com/privacy-policy/
+    type: PrivacyPolicy
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,630 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all company annuals and associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/CompanyAnnuals"
+          },
+          "docs": "List all company annuals and associations"
+        },
+        {
+          "info": {
+            "name": "Search companies by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Companies"
+          },
+          "docs": "Search companies by name"
+        },
+        {
+          "info": {
+            "name": "Retrieve annuals for a member id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/CompanyAnnuals/Member"
+          },
+          "docs": "Retrieve annuals for a member id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Drivers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List drivers by series and season",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Driver"
+          },
+          "docs": "List drivers by series and season"
+        },
+        {
+          "info": {
+            "name": "Driver performance summary by track type, track, and season",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/DriverSummary"
+          },
+          "docs": "Driver performance summary by track type, track, and season"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Points",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Driver championship standings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/DriverPoints"
+          },
+          "docs": "Driver championship standings"
+        },
+        {
+          "info": {
+            "name": "Manufacturer points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/ManufacturerPoints"
+          },
+          "docs": "Manufacturer points"
+        },
+        {
+          "info": {
+            "name": "Owner championship points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/OwnerPoints"
+          },
+          "docs": "Owner championship points"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Races",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Race results by season and series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/races"
+          },
+          "docs": "Race results by season and series"
+        },
+        {
+          "info": {
+            "name": "Specific race details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/races/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Specific race details"
+        },
+        {
+          "info": {
+            "name": "Historical race listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/racelist"
+          },
+          "docs": "Historical race listings"
+        },
+        {
+          "info": {
+            "name": "Race journal file download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/races/:race_id/journal",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Race journal file download"
+        },
+        {
+          "info": {
+            "name": "Infractions for a specific race",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/raceinfractions"
+          },
+          "docs": "Infractions for a specific race"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Live",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "On-track activity feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveFeed"
+          },
+          "docs": "On-track activity feed"
+        },
+        {
+          "info": {
+            "name": "Flag status updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveFlag"
+          },
+          "docs": "Flag status updates"
+        },
+        {
+          "info": {
+            "name": "Current standings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LivePoints"
+          },
+          "docs": "Current standings"
+        },
+        {
+          "info": {
+            "name": "Qualifying results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveQualifying"
+          },
+          "docs": "Qualifying results"
+        },
+        {
+          "info": {
+            "name": "Round-by-round qualifying",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveQualifyingRounds"
+          },
+          "docs": "Round-by-round qualifying"
+        },
+        {
+          "info": {
+            "name": "Pit stop information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LivePitData"
+          },
+          "docs": "Pit stop information"
+        },
+        {
+          "info": {
+            "name": "Stage results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveStages"
+          },
+          "docs": "Stage results"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/tracks"
+          },
+          "docs": "List all tracks"
+        },
+        {
+          "info": {
+            "name": "Specific track details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/track/:track_id",
+            "params": [
+              {
+                "name": "track_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Specific track details"
+        },
+        {
+          "info": {
+            "name": "Track with associated races",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/track"
+          },
+          "docs": "Track with associated races"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "TrackTemp",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current track temperature readings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/tracktemp/current"
+          },
+          "docs": "Current track temperature readings"
+        },
+        {
+          "info": {
+            "name": "Historical track temperature data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/tracktemp/archive"
+          },
+          "docs": "Historical track temperature data"
+        },
+        {
+          "info": {
+            "name": "Track temperature data by time range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/tracktemp/daterange"
+          },
+          "docs": "Track temperature data by time range"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Series",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Series overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Series"
+          },
+          "docs": "Series overview"
+        },
+        {
+          "info": {
+            "name": "Season champions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Series/Seasons"
+          },
+          "docs": "Season champions"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Weekend",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Full race weekend data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/weekend/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Full race weekend data"
+        },
+        {
+          "info": {
+            "name": "Schedule for a specific race",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/weekendschedule/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Schedule for a specific race"
+        },
+        {
+          "info": {
+            "name": "Series and season weekend schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/weekendschedule"
+          },
+          "docs": "Series and season weekend schedule"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "EntryList",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Preliminary entry list for a race",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/prelimentrylist/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Preliminary entry list for a race"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Season averages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/stats/season"
+          },
+          "docs": "Season averages"
+        },
+        {
+          "info": {
+            "name": "Race box scores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/stats/boxscore"
+          },
+          "docs": "Race box scores"
+        },
+        {
+          "info": {
+            "name": "Available reports for a race",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/stats/reports/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Available reports for a race"
+        },
+        {
+          "info": {
+            "name": "Download a report by key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/stats/report"
+          },
+          "docs": "Download a report by key"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Inspection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AIM inspection system data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Inspection/aim/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "AIM inspection system data"
+        },
+        {
+          "info": {
+            "name": "Entry IDR lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Inspection/idr/:idrnumber",
+            "params": [
+              {
+                "name": "idrnumber",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Entry IDR lookup"
+        },
+        {
+          "info": {
+            "name": "Device number mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Inspection/devicenumbers"
+          },
+          "docs": "Device number mapping"
+        },
+        {
+          "info": {
+            "name": "Technique submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Inspection/submission/technique"
+          },
+          "docs": "Technique submissions"
+        },
+        {
+          "info": {
+            "name": "Safety incident reporting webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://feed.nascar.com/api/Inspection/incidentwebhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Safety incident reporting webhook"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
