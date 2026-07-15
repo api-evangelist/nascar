@@ -40,6 +40,8 @@ apis:
       The NASCAR Feed API provides access to race results, standings, schedules, driver and team information, lap-by-lap
       data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI.
 common:
+  - type: AgenticAccess
+    url: agentic-access/nascar-agentic-access.yml
   - type: DomainSecurity
     url: security/nascar-domain-security.yml
   - type: LinkedIn
