@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: Companies
+paths:
+  /api/CompanyAnnuals:
+    get:
+      tags:
+      - Companies
+      operationId: listCompanyAnnuals
+      summary: List all company annuals and associations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/Companies:
+    get:
+      tags:
+      - Companies
+      operationId: searchCompanies
+      summary: Search companies by name
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/CompanyAnnuals/Member:
+    get:
+      tags:
+      - Companies
+      operationId: getCompanyAnnualsForMember
+      summary: Retrieve annuals for a member id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

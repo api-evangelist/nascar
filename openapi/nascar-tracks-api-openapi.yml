@@ -1,0 +1,66 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies Tracks API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: Tracks
+paths:
+  /api/tracks:
+    get:
+      tags:
+      - Tracks
+      operationId: listTracks
+      summary: List all tracks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/track/{track_id}:
+    get:
+      tags:
+      - Tracks
+      operationId: getTrack
+      summary: Specific track details
+      parameters:
+      - name: track_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/track:
+    get:
+      tags:
+      - Tracks
+      operationId: getTrackWithRaces
+      summary: Track with associated races
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

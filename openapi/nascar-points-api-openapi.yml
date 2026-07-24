@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies Points API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: Points
+paths:
+  /api/DriverPoints:
+    get:
+      tags:
+      - Points
+      operationId: getDriverPoints
+      summary: Driver championship standings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/ManufacturerPoints:
+    get:
+      tags:
+      - Points
+      operationId: getManufacturerPoints
+      summary: Manufacturer points
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/OwnerPoints:
+    get:
+      tags:
+      - Points
+      operationId: getOwnerPoints
+      summary: Owner championship points
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

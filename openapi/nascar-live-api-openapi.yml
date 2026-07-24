@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies Live API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: Live
+paths:
+  /api/LiveFeed:
+    get:
+      tags:
+      - Live
+      operationId: getLiveFeed
+      summary: On-track activity feed
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveFlag:
+    get:
+      tags:
+      - Live
+      operationId: getLiveFlag
+      summary: Flag status updates
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LivePoints:
+    get:
+      tags:
+      - Live
+      operationId: getLivePoints
+      summary: Current standings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveQualifying:
+    get:
+      tags:
+      - Live
+      operationId: getLiveQualifying
+      summary: Qualifying results
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveQualifyingRounds:
+    get:
+      tags:
+      - Live
+      operationId: getLiveQualifyingRounds
+      summary: Round-by-round qualifying
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LivePitData:
+    get:
+      tags:
+      - Live
+      operationId: getLivePitData
+      summary: Pit stop information
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/LiveStages:
+    get:
+      tags:
+      - Live
+      operationId: getLiveStages
+      summary: Stage results
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

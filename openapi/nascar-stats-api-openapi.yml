@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies Stats API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: Stats
+paths:
+  /api/stats/season:
+    get:
+      tags:
+      - Stats
+      operationId: getSeasonStats
+      summary: Season averages
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/stats/boxscore:
+    get:
+      tags:
+      - Stats
+      operationId: getBoxScore
+      summary: Race box scores
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/stats/reports/{race_id}:
+    get:
+      tags:
+      - Stats
+      operationId: listStatsReports
+      summary: Available reports for a race
+      parameters:
+      - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/stats/report:
+    get:
+      tags:
+      - Stats
+      operationId: getStatsReport
+      summary: Download a report by key
+      responses:
+        '200':
+          description: OK
+components:
+  parameters:
+    RaceId:
+      name: race_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Race identifier.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

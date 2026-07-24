@@ -1,0 +1,47 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies Drivers API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: Drivers
+paths:
+  /api/Driver:
+    get:
+      tags:
+      - Drivers
+      operationId: listDrivers
+      summary: List drivers by series and season
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/DriverSummary:
+    get:
+      tags:
+      - Drivers
+      operationId: getDriverSummary
+      summary: Driver performance summary by track type, track, and season
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

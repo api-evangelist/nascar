@@ -1,0 +1,94 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies Races API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: Races
+paths:
+  /api/races:
+    get:
+      tags:
+      - Races
+      operationId: listRaces
+      summary: Race results by season and series
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/races/{race_id}:
+    get:
+      tags:
+      - Races
+      operationId: getRace
+      summary: Specific race details
+      parameters:
+      - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/racelist:
+    get:
+      tags:
+      - Races
+      operationId: getRaceList
+      summary: Historical race listings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/races/{race_id}/journal:
+    get:
+      tags:
+      - Races
+      operationId: getRaceJournal
+      summary: Race journal file download
+      parameters:
+      - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+  /api/raceinfractions:
+    get:
+      tags:
+      - Races
+      operationId: getRaceInfractions
+      summary: Infractions for a specific race
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  parameters:
+    RaceId:
+      name: race_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Race identifier.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

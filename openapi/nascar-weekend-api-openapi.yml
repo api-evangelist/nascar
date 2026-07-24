@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies Weekend API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: Weekend
+paths:
+  /api/weekend/{race_id}:
+    get:
+      tags:
+      - Weekend
+      operationId: getWeekend
+      summary: Full race weekend data
+      parameters:
+      - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/weekendschedule/{race_id}:
+    get:
+      tags:
+      - Weekend
+      operationId: getWeekendSchedule
+      summary: Schedule for a specific race
+      parameters:
+      - $ref: '#/components/parameters/RaceId'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/weekendschedule:
+    get:
+      tags:
+      - Weekend
+      operationId: getWeekendScheduleAll
+      summary: Series and season weekend schedule
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  parameters:
+    RaceId:
+      name: race_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Race identifier.
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true

@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: NASCAR Feed Companies TrackTemp API
+  description: NASCAR Feed REST API providing race results, standings, schedules, driver and team information, lap-by-lap data, live race telemetry, inspection data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI at feed.nascar.com.
+  version: 1.0.0
+  contact:
+    name: NASCAR
+    url: https://www.nascar.com/
+  x-generated-from: https://feed.nascar.com/swagger/ui/index
+  x-generated-by: claude-crawl-2026-05-08
+servers:
+- url: https://feed.nascar.com
+  description: NASCAR Feed production API
+tags:
+- name: TrackTemp
+paths:
+  /api/tracktemp/current:
+    get:
+      tags:
+      - TrackTemp
+      operationId: getTrackTempCurrent
+      summary: Current track temperature readings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/tracktemp/archive:
+    get:
+      tags:
+      - TrackTemp
+      operationId: getTrackTempArchive
+      summary: Historical track temperature data
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+  /api/tracktemp/daterange:
+    get:
+      tags:
+      - TrackTemp
+      operationId: getTrackTempByDateRange
+      summary: Track temperature data by time range
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
