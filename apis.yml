@@ -6,9 +6,21 @@ description: >-
   Swagger that delivers race results, standings, schedules, driver and team information, and other motorsport data for
   partners, broadcasters, and fans.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/nascar.png
 url: https://raw.githubusercontent.com/api-evangelist/nascar/refs/heads/main/apis.yml
 created: '2025-02-06'
 modified: '2026-05-19'
@@ -21,24 +33,162 @@ tags:
   - Race Results
   - Schedules
 apis:
-  - aid: nascar:nascar
-    name: NASCAR Feed API
-    tags:
-      - Auto Racing
-      - Sports
-      - Stock Cars
-      - Motorsports
-    humanURL: https://feed.nascar.com/swagger/ui/index
-    properties:
-      - url: https://feed.nascar.com/swagger/ui/index
-        type: Documentation
-      - url: https://feed.nascar.com/swagger/ui/index
-        type: Reference
-      - url: openapi/nascar-openapi.yml
-        type: OpenAPI
-    description: >-
-      The NASCAR Feed API provides access to race results, standings, schedules, driver and team information, lap-by-lap
-      data, and other motorsport data across NASCAR's racing series. Documentation is published via Swagger UI.
+- aid: nascar:nascar-companies-api
+  name: NASCAR Companies API
+  description: The Companies API from NASCAR — 3 operation(s) for companies.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Companies
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-companies-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-drivers-api
+  name: NASCAR Drivers API
+  description: The Drivers API from NASCAR — 2 operation(s) for drivers.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Drivers
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-drivers-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-entrylist-api
+  name: NASCAR EntryList API
+  description: The EntryList API from NASCAR — 1 operation(s) for entrylist.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - EntryList
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-entrylist-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-inspection-api
+  name: NASCAR Inspection API
+  description: The Inspection API from NASCAR — 5 operation(s) for inspection.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Inspection
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-inspection-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-live-api
+  name: NASCAR Live API
+  description: The Live API from NASCAR — 7 operation(s) for live.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Live
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-live-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-points-api
+  name: NASCAR Points API
+  description: The Points API from NASCAR — 3 operation(s) for points.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Points
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-points-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-races-api
+  name: NASCAR Races API
+  description: The Races API from NASCAR — 5 operation(s) for races.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Races
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-races-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-series-api
+  name: NASCAR Series API
+  description: The Series API from NASCAR — 2 operation(s) for series.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Series
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-series-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-stats-api
+  name: NASCAR Stats API
+  description: The Stats API from NASCAR — 4 operation(s) for stats.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Stats
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-stats-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-tracks-api
+  name: NASCAR Tracks API
+  description: The Tracks API from NASCAR — 3 operation(s) for tracks.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Tracks
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-tracks-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-tracktemp-api
+  name: NASCAR TrackTemp API
+  description: The TrackTemp API from NASCAR — 3 operation(s) for tracktemp.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - TrackTemp
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-tracktemp-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
+- aid: nascar:nascar-weekend-api
+  name: NASCAR Weekend API
+  description: The Weekend API from NASCAR — 3 operation(s) for weekend.
+  humanURL: https://feed.nascar.com/swagger/ui/index
+  tags:
+  - Weekend
+  properties:
+  - type: OpenAPI
+    url: openapi/nascar-weekend-api-openapi.yml
+  - type: Documentation
+    url: https://feed.nascar.com/swagger/ui/index
+  - type: Reference
+    url: https://feed.nascar.com/swagger/ui/index
 common:
   - type: AgenticAccess
     url: agentic-access/nascar-agentic-access.yml
