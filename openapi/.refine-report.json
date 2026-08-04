@@ -1,0 +1,36 @@
+{
+  "provider": "nascar",
+  "sources": [
+    "nascar-companies-api-openapi.yml",
+    "nascar-drivers-api-openapi.yml",
+    "nascar-entrylist-api-openapi.yml",
+    "nascar-inspection-api-openapi.yml",
+    "nascar-live-api-openapi.yml",
+    "nascar-points-api-openapi.yml",
+    "nascar-races-api-openapi.yml",
+    "nascar-series-api-openapi.yml",
+    "nascar-stats-api-openapi.yml",
+    "nascar-tracks-api-openapi.yml",
+    "nascar-tracktemp-api-openapi.yml",
+    "nascar-weekend-api-openapi.yml"
+  ],
+  "outputs": [
+    "nascar-companies-api-openapi.yml",
+    "nascar-drivers-api-openapi.yml",
+    "nascar-entrylist-api-openapi.yml",
+    "nascar-inspection-api-openapi.yml",
+    "nascar-live-api-openapi.yml",
+    "nascar-points-api-openapi.yml",
+    "nascar-races-api-openapi.yml",
+    "nascar-series-api-openapi.yml",
+    "nascar-stats-api-openapi.yml",
+    "nascar-tracks-api-openapi.yml",
+    "nascar-tracktemp-api-openapi.yml",
+    "nascar-weekend-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
