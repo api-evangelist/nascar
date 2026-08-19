@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Live API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Live",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "On-track activity feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveFeed"
+          },
+          "docs": "On-track activity feed"
+        },
+        {
+          "info": {
+            "name": "Flag status updates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveFlag"
+          },
+          "docs": "Flag status updates"
+        },
+        {
+          "info": {
+            "name": "Current standings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LivePoints"
+          },
+          "docs": "Current standings"
+        },
+        {
+          "info": {
+            "name": "Qualifying results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveQualifying"
+          },
+          "docs": "Qualifying results"
+        },
+        {
+          "info": {
+            "name": "Round-by-round qualifying",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveQualifyingRounds"
+          },
+          "docs": "Round-by-round qualifying"
+        },
+        {
+          "info": {
+            "name": "Pit stop information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LivePitData"
+          },
+          "docs": "Pit stop information"
+        },
+        {
+          "info": {
+            "name": "Stage results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/LiveStages"
+          },
+          "docs": "Stage results"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

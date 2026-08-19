@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Points API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Points",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Driver championship standings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/DriverPoints"
+          },
+          "docs": "Driver championship standings"
+        },
+        {
+          "info": {
+            "name": "Manufacturer points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/ManufacturerPoints"
+          },
+          "docs": "Manufacturer points"
+        },
+        {
+          "info": {
+            "name": "Owner championship points",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/OwnerPoints"
+          },
+          "docs": "Owner championship points"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

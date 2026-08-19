@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies TrackTemp API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TrackTemp",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Current track temperature readings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/tracktemp/current"
+          },
+          "docs": "Current track temperature readings"
+        },
+        {
+          "info": {
+            "name": "Historical track temperature data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/tracktemp/archive"
+          },
+          "docs": "Historical track temperature data"
+        },
+        {
+          "info": {
+            "name": "Track temperature data by time range",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/tracktemp/daterange"
+          },
+          "docs": "Track temperature data by time range"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Drivers API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drivers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List drivers by series and season",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Driver"
+          },
+          "docs": "List drivers by series and season"
+        },
+        {
+          "info": {
+            "name": "Driver performance summary by track type, track, and season",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/DriverSummary"
+          },
+          "docs": "Driver performance summary by track type, track, and season"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

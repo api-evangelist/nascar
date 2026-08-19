@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Series API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Series",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Series overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Series"
+          },
+          "docs": "Series overview"
+        },
+        {
+          "info": {
+            "name": "Season champions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Series/Seasons"
+          },
+          "docs": "Season champions"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

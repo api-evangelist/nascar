@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all company annuals and associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/CompanyAnnuals"
+          },
+          "docs": "List all company annuals and associations"
+        },
+        {
+          "info": {
+            "name": "Search companies by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Companies"
+          },
+          "docs": "Search companies by name"
+        },
+        {
+          "info": {
+            "name": "Retrieve annuals for a member id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/CompanyAnnuals/Member"
+          },
+          "docs": "Retrieve annuals for a member id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

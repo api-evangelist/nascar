@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Weekend API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Weekend",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Full race weekend data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/weekend/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Full race weekend data"
+        },
+        {
+          "info": {
+            "name": "Schedule for a specific race",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/weekendschedule/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Schedule for a specific race"
+        },
+        {
+          "info": {
+            "name": "Series and season weekend schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/weekendschedule"
+          },
+          "docs": "Series and season weekend schedule"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Races API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Races",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Race results by season and series",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/races"
+          },
+          "docs": "Race results by season and series"
+        },
+        {
+          "info": {
+            "name": "Specific race details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/races/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Specific race details"
+        },
+        {
+          "info": {
+            "name": "Historical race listings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/racelist"
+          },
+          "docs": "Historical race listings"
+        },
+        {
+          "info": {
+            "name": "Race journal file download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/races/:race_id/journal",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Race journal file download"
+        },
+        {
+          "info": {
+            "name": "Infractions for a specific race",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/raceinfractions"
+          },
+          "docs": "Infractions for a specific race"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

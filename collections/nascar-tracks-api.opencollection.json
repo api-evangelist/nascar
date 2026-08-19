@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Tracks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all tracks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/tracks"
+          },
+          "docs": "List all tracks"
+        },
+        {
+          "info": {
+            "name": "Specific track details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/track/:track_id",
+            "params": [
+              {
+                "name": "track_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Specific track details"
+        },
+        {
+          "info": {
+            "name": "Track with associated races",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/track"
+          },
+          "docs": "Track with associated races"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Inspection API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inspection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "AIM inspection system data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Inspection/aim/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "AIM inspection system data"
+        },
+        {
+          "info": {
+            "name": "Entry IDR lookup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Inspection/idr/:idrnumber",
+            "params": [
+              {
+                "name": "idrnumber",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Entry IDR lookup"
+        },
+        {
+          "info": {
+            "name": "Device number mapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Inspection/devicenumbers"
+          },
+          "docs": "Device number mapping"
+        },
+        {
+          "info": {
+            "name": "Technique submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/Inspection/submission/technique"
+          },
+          "docs": "Technique submissions"
+        },
+        {
+          "info": {
+            "name": "Safety incident reporting webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://feed.nascar.com/api/Inspection/incidentwebhook",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Safety incident reporting webhook"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

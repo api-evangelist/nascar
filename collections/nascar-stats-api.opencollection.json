@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies Stats API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Season averages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/stats/season"
+          },
+          "docs": "Season averages"
+        },
+        {
+          "info": {
+            "name": "Race box scores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/stats/boxscore"
+          },
+          "docs": "Race box scores"
+        },
+        {
+          "info": {
+            "name": "Available reports for a race",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/stats/reports/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Available reports for a race"
+        },
+        {
+          "info": {
+            "name": "Download a report by key",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/stats/report"
+          },
+          "docs": "Download a report by key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

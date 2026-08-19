@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "NASCAR Feed Companies EntryList API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "EntryList",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Preliminary entry list for a race",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://feed.nascar.com/api/prelimentrylist/:race_id",
+            "params": [
+              {
+                "name": "race_id",
+                "value": "",
+                "type": "path",
+                "description": "Race identifier."
+              }
+            ]
+          },
+          "docs": "Preliminary entry list for a race"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
