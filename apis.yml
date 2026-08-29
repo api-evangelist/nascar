@@ -6,6 +6,18 @@ description: >-
   Swagger that delivers race results, standings, schedules, driver and team information, and other motorsport data for
   partners, broadcasters, and fans.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
