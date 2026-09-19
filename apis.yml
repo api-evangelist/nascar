@@ -43,6 +43,13 @@ tags:
   - Stock Cars
   - Motorsports
   - Race Results
+  - Schedule
+tags_raw:
+  - Auto Racing
+  - Sports
+  - Stock Cars
+  - Motorsports
+  - Race Results
   - Schedules
 apis:
 - aid: nascar:nascar-companies-api
