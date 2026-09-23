@@ -1,0 +1,1 @@
+{"resource":"https://mcp.nascar.com/mcp","authorization_servers":["https://login.microsoftonline.com/f61c68fe-ece1-4ef5-bafa-65a556e9b07b/v2.0"],"scopes_supported":["api://20a02cb8-e019-4445-8623-12cb798711d9/access_as_user"],"bearer_methods_supported":["header"]}

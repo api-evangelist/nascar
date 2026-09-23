@@ -1,0 +1,33 @@
+generated: '2026-09-19'
+method: probed
+hosts:
+- host: https://mcp.nascar.com
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: nascar-mcp-oauth-protected-resource.json
+    bytes: 264
+  path_echo_control: passed
+- host: https://login.microsoftonline.com
+  documents:
+  - path: /f61c68fe-ece1-4ef5-bafa-65a556e9b07b/v2.0/.well-known/openid-configuration
+    status: 200
+    file: nascar-login-openid-configuration.json
+    bytes: 1964
+  path_echo_control: passed
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://mcp.nascar.com
+    path: /.well-known/oauth-protected-resource
+    file: nascar-mcp-oauth-protected-resource.json
+  - host: https://login.microsoftonline.com
+    path: /f61c68fe-ece1-4ef5-bafa-65a556e9b07b/v2.0/.well-known/openid-configuration
+    file: nascar-login-openid-configuration.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'
