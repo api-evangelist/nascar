@@ -80,6 +80,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Resource'
 components:
+  schemas:
+    Resource:
+      type: object
+      additionalProperties: true
   parameters:
     RaceId:
       name: race_id
@@ -88,7 +92,3 @@ components:
       schema:
         type: string
       description: Race identifier.
-  schemas:
-    Resource:
-      type: object
-      additionalProperties: true
