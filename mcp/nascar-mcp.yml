@@ -19,3 +19,18 @@ tools_note: No tool list captured. This manifest records a PROBED, reachable end
   not perform. Run signals/audit_mcp_authorship.py --probe to enumerate tools and settle platform-vs-provider
   authorship. Do NOT derive a tool list from the OpenAPI and store it here -- that is a candidate manifest,
   and it belongs under an X-MCPServerCandidate pointer.
+rfc9728:
+  endpoint: https://mcp.nascar.com/mcp
+  metadata_url: https://mcp.nascar.com/.well-known/oauth-protected-resource/mcp
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp.nascar.com/mcp
+    authorization_servers:
+    - https://login.microsoftonline.com/f61c68fe-ece1-4ef5-bafa-65a556e9b07b/v2.0
+    scopes_supported:
+    - api://20a02cb8-e019-4445-8623-12cb798711d9/access_as_user
+    bearer_methods_supported:
+    - header
